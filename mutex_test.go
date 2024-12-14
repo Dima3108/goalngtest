@@ -6,7 +6,6 @@ https://habr.com/ru/articles/268585/
 https://blog.logrocket.com/benchmarking-golang-improve-function-performance/
 */
 import (
-	"fmt"
 	"sync"
 	"testing"
 
@@ -42,7 +41,7 @@ func mumain() bool {
 	l3 := []int{}
 	go func() {
 		mym.Lock()
-		fmt.Println("T1")
+		//fmt.Println("T1")
 		i := 0
 		offset := 0
 		for true {
@@ -52,12 +51,12 @@ func mumain() bool {
 				break
 			}
 		}
-		fmt.Println("!T1")
+		//fmt.Println("!T1")
 		mym.Unlock()
 	}()
 	go func() {
 		mym.Lock()
-		fmt.Println("T2")
+		//fmt.Println("T2")
 		i := 0
 		offset := 1
 		for true {
@@ -67,12 +66,12 @@ func mumain() bool {
 				break
 			}
 		}
-		fmt.Println("!T2")
+		//fmt.Println("!T2")
 		mym.Unlock()
 	}()
 	go func() {
 		mym.Lock()
-		fmt.Println("T3")
+		//fmt.Println("T3")
 		i := 0
 		offset := 2
 		for true {
@@ -82,7 +81,7 @@ func mumain() bool {
 				break
 			}
 		}
-		fmt.Println("!T3")
+		//fmt.Println("!T3")
 		mym.Unlock()
 	}()
 	mym.Wait()
@@ -114,9 +113,9 @@ func BenchmarkMutex(b *testing.B) {
 	mym.Lock()
 	mym.Unlock()
 	mym.Wait()*/
-	fmt.Println("start iter!")
+	//fmt.Println("start iter!")
 	mumain()
-	fmt.Println("stop iter")
+	//fmt.Println("stop iter")
 	//}
 }
 
